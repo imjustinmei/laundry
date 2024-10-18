@@ -22,10 +22,10 @@ jobs:
 
       - name: run script
         run: |
-          git pull --rebase origin main
           python scrape.py
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
           git commit -m "fetch data $(date '+%Y-%m-%d %H:%M')"
+          git pull --rebase origin main
           git push

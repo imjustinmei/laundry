@@ -6,7 +6,7 @@ import schedule
 import time
 
 
-weeks = str((datetime.now() - datetime(2024, 10, 17)).days // 7)
+weeks = str((datetime.now() - datetime(2024, 10, 18)).days // 7)
 use_path = os.path.join('data', 'use.csv')
 laundry_path = os.path.join('data', weeks + '.csv')
 
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     elapsed = 0
 
-    while elapsed < 14400:
+    while elapsed < 14400 - 1:
         schedule.run_pending()
         time.sleep(1)
         elapsed += 1
