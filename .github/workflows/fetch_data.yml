@@ -27,5 +27,4 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "fetch data $(date '+%Y-%m-%d %H:%M')"
-          git pull --rebase origin main
           git push

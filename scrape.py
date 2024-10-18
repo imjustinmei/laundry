@@ -6,6 +6,8 @@ import schedule
 import time
 
 
+start = time.time()
+
 weeks = str((datetime.now() - datetime(2024, 10, 18)).days // 7)
 use_path = os.path.join('data', 'use.csv')
 laundry_path = os.path.join('data', weeks + '.csv')
@@ -67,12 +69,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
-    schedule.every(1).minutes.do(main)
+    start = time.monotonic_ns()
+    iterations = 0
 
-    elapsed = 0
-
-    while elapsed < 14400 - 1:
-        schedule.run_pending()
-        time.sleep(1)
-        elapsed += 1
+    while iterations < 240:
+        main()
+        iterations += 1
+        time.sleep(60.0 - ((time.monotonic_ns() - start) / (10 ** 9)) % 60.0)
